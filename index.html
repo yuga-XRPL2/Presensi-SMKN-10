@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presensi SMKN 10 Semarang</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <header> 
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo-removebg-preview.png" alt="SMKN 10 Semarang">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#utama"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="#presensi"><i class="fas fa-clipboard-check"></i> Presensi</a></li>
+                        <li><a href="#laporan"><i class="fas fa-chart-bar"></i> Laporan</a></li>
+                        <li><a href="#guru"><i class="fas fa-chalkboard-teacher"></i> Kontak Guru</a></li>
+                        <li><a href="#tentang"><i class="fas fa-info-circle"></i> Tentang Kami</a></li>
+                    </ul>
+                </nav>
+                <div class="theme">
+                    <label class="theme__toggle-wrap">
+                        <input id="theme-toggle" type="checkbox" class="theme__toggle">
+                        <span class="theme__icon">
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                            <span class="theme__icon-part"></span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    <!-- tampilan utama -->
+    <section id="utama" class="hero">
+        <div class="container">
+            <h1>Menciptakan Generasi Muda yang Unggul dan Berintegritas</h1>
+            <a href="#presensi" class="cta-btn">Mulai Presensi Sekarang</a>
+        </div>
+    </section>
+
+    <!-- form buat Presensi -->
+    <section id="presensi" class="presensi">
+        <div class="container">
+            <h2>Form Presensi Siswa</h2>
+            <form id="presensiForm">
+                <div class="form-group">
+                    <label for="nama"><i class="fas fa-user"></i> Nama Lengkap</label>
+                    <input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <div class="form-group">
+                    <label for="nis"><i class="fas fa-id-card"></i> NIS</label>
+                    <input type="text" id="nis" placeholder="Masukkan NIS" required>
+                </div>
+                <div class="form-group">
+                    <label for="kelas"><i class="fas fa-school"></i> Kelas</label>
+                    <select id="kelas" required>
+                        <option value="" disabled selected>Pilih Kelas dan Jurusan</option>
+
+                        <!-- RPL -->
+                        <option value="X RPL 1">X RPL </option>
+                        <option value="XI RPL 1">XI RPL </option>
+                        <option value="XII RPL 1">XII RPL </option>
+
+                        <!-- KKB -->
+                        <option value="X KKB 1">X KKB </option>
+                        <option value="XI KKB 1">XI KKB </option>
+                        <option value="XII KKB 1">XII KKB </option>
+
+                        <!-- TPK -->
+                        <option value="X TPK 1">X TPK </option>
+                        <option value="XI TPK 1">XI TPK </option>
+                        <option value="XII TPK 1">XII TPK </option>
+
+                        <!-- TKRO -->
+                        <option value="X TKRO 1">X TKRO </option>
+                        <option value="XI TKRO 1">XI TKRO </option>
+                        <option value="XII TKRO 1">XII TKRO </option>
+
+                        <!-- TBSM -->
+                        <option value="X TBSM 1">X TBSM </option>
+                        <option value="XI TBSM 1">XI TBSM </option>
+                        <option value="XII TBSM 1">XII TBSM </option>
+
+                        <!-- NKN -->
+                        <option value="X NKN 1">X NKN </option>
+                        <option value="XI NKN 1">XI NKN </option>
+                        <option value="XII NKN 1">XII NKN </option>
+
+                        <!-- TP -->
+                        <option value="X TP 1">X TP </option>
+                        <option value="XI TP 1">XI TP 1</option>
+                        <option value="XII TP 1">XII TP </option>
+                    </select>
+            </div>
+                <div class="form-group">
+                    <label for="tanggal"><i class="fas fa-calendar-alt"></i> Tanggal</label>
+                    <input type="date" id="tanggal" required>
+                </div>
+                <div class="form-group">
+                    <label for="waktu"><i class="fas fa-clock"></i> Waktu</label>
+                    <input type="time" id="waktu" required>
+                </div>
+                <div class="form-group">
+                    <label for="photo"><i class="fas fa-camera"></i> Foto</label>
+                    <input type="file" id="photo" accept="image/jpeg" required>
+                </div>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Kirim Presensi</button>
+            </form>
+            <div id="locationStatus"></div>
+            <div id="feedback"></div>
+        </div>
+    </section>
+ 
+    <section id="laporan" class="laporan">
+        <div class="container">
+            <h2>Laporan Presensi</h2>
+            <div id="laporanContainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>NIS</th>
+                            <th>Kelas</th>
+                            <th>Tanggal</th>
+                            <th>Waktu</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="laporanTable">
+                        <!-- Data laporan presensi akan ditambahkan di sini -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Guru -->
+    <section id="guru" class="our-team flex-column">
+        <h2>Tim <span class="blue-color">Pengajar</span></h2>
+        <div class="team-cards-section flex">
+            <div class="team-card flex-column">
+                <img src="pak ari.jpg" alt="Foto Guru">
+                <div class="team-name">
+                    <h4 class="blue-color">Ari Wijayanto, S.Kom</h4>
+                    <p>Guru Produktif RPL</p>
+                </div>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="far fa-envelope"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="team-card flex-column">
+                <img src="gatot.jpg" alt="Foto Guru">
+                <div class="team-name">
+                    <h4 class="blue-color">Gatot Nuhardi, M.Pd.</h4>
+                    <p>Guru Produktif RPL</p>
+                </div>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="far fa-envelope"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="team-card flex-column">
+                <img src="sona.jpg" alt="Foto Guru">
+                <div class="team-name">
+                    <h4 class="blue-color">Sonalita, S.T.</h4>
+                    <p>Guru Produktif RPL</p>
+                </div>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="far fa-envelope"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="team-card flex-column">
+                <img src="ENDANG.png" alt="Foto Guru">
+                <div class="team-name">
+                    <h4 class="blue-color">Endang Widayati, S.Kom</h4>
+                    <p>Guru Produktif RPL</p>
+                </div>
+                <div class="social-media">
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="far fa-envelope"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Kami -->
+    <section id="tentang" class="tentang">
+        <div class="container">
+            <h2>Tentang Website Presensi</h2>
+            <p>Website presensi ini dikembangkan untuk memudahkan proses pencatatan kehadiran siswa di SMKN 10 Semarang.
+                Dengan fitur presensi online, siswa dapat melakukan presensi dengan cepat dan mudah. Laporan presensi
+                dapat diakses oleh guru dan pihak administrasi untuk memantau kehadiran siswa secara real-time. Selain
+                itu, website ini juga menyediakan informasi kontak para guru untuk memfasilitasi komunikasi antara siswa
+                dan guru.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>Tentang Kami</h3>
+                <p>Website ini dikembangkan untuk memudahkan proses presensi di SMKN 10 Semarang. Kami berkomitmen untuk menyediakan layanan yang efisien dan memudahkan siswa serta guru.</p>
+            </div>
+            <div class="footer-section links">
+                <h3>website</h3>
+                <ul>
+                    <li><a href="#utama"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#presensi"><i class="fas fa-clipboard-check"></i>Presensi</a></li>
+                    <li><a href="#laporan"><i class="fas fa-chart-bar"></i>Laporan</a></li>
+                    <li><a href="#guru"><i class="fas fa-chalkboard-teacher"></i>Kontak Guru</a></li>
+                    <li><a href="#tentang"><i class="fas fa-info-circle"></i>Tentang Kami</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact-form">
+                <h3>Kontak Kami</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. Kokrosono No.75, Panggung Kidul, Kec. Semarang Utara, Kota Semarang, Jawa Tengah 50178</p>
+                <p><i class="fas fa-phone"></i> (024) 3515701</p>
+                <p><i class="fas fa-envelope"></i> smk10smg@yahoo.co.id</p>
+                <div class="social-media">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy;SMKN 10 Semarang @2024</p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="script.js"></script>
+    </body>
+    </html>
+
+    
